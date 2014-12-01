@@ -1,0 +1,279 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/r1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <FrameLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/leaguebackground"
+			android:scaleType = "centerCrop"/>        
+    </FrameLayout>
+
+    <ScrollView 
+            android:layout_width="match_parent"
+    		android:layout_height="wrap_content"
+    		android:padding="5sp">	
+	    <RelativeLayout
+	        android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"
+	    	android:padding="5sp"
+	    	android:background="#AAFFFFFF">
+	    	<EditText
+		        android:id="@+id/et1"
+		        android:layout_width="match_parent"
+		        android:layout_height="50sp"
+		        android:layout_alignParentTop="true"
+		        android:layout_centerHorizontal="true"
+		        android:ems="10"
+		        android:gravity="center"
+		        android:hint="@string/enter_text"
+		        android:inputType="text" >
+	    	</EditText>
+	    
+	    	<Button
+	        	android:id="@+id/button1"
+	        	android:layout_width="match_parent"
+	        	android:layout_height="50sp"
+	        	android:layout_below="@id/et1"
+	        	android:background="#00000000"
+	        	android:textStyle="bold"
+	        	android:textSize="20sp"
+	        	android:textColor="#757575"
+	        	android:onClick="myClickHandler"
+	        	android:text="@string/get_info" />
+		    
+		    <TextView
+	           android:id="@+id/field1"
+	           android:layout_width="wrap_content"
+	           android:layout_height="50sp"
+	           android:layout_below="@id/button1"
+	           android:paddingLeft="10sp"
+	           android:paddingStart="5sp"
+	           android:paddingRight="5sp"
+	           android:paddingEnd="5sp"
+	           android:textStyle="italic"
+	           android:textSize="20sp"
+	           android:textColor="#757575"
+	           android:gravity="center"
+	           android:text="@string/field1" />
+	    
+	       <TextView
+	           android:id="@+id/tv1"
+	           android:layout_width="wrap_content"
+	           android:layout_height="50sp"
+	           android:layout_below="@id/button1"
+	           android:layout_alignParentRight="true"
+	           android:layout_alignParentEnd="true"
+	           android:paddingLeft="5sp"
+	           android:paddingStart="5sp"
+	           android:paddingRight="10sp"
+	           android:paddingEnd="10sp"
+	           android:textStyle="italic"
+	           android:textSize="20sp"
+	           android:textColor="#757575"
+	           android:gravity="center"
+	           android:text="@string/placeholder" />
+	       
+	       <View
+	            android:id="@+id/bar1"
+	            android:layout_width="match_parent"
+	            android:layout_height="1dip"
+	            android:layout_below="@id/tv1"
+	            android:background="#E0E0E0"
+	            android:layout_marginLeft="4dip"
+	            android:layout_marginRight="4dip" />
+	       
+	       <TextView
+	           android:id="@+id/field2"
+	           android:layout_width="wrap_content"
+	           android:layout_height="50sp"
+	           android:layout_below="@id/tv1"
+	           android:paddingLeft="10sp"
+	           android:paddingStart="10sp"
+	           android:paddingRight="5sp"
+	           android:paddingEnd="5sp"
+	           android:textStyle="italic"
+	           android:textSize="20sp"
+	           android:textColor="#757575"
+	           android:gravity="center"
+	           android:text="@string/field2" />
+	
+	       <TextView
+	           android:id="@+id/tv2"
+	           android:layout_width="wrap_content"
+	           android:layout_height="50sp"
+	           android:layout_below="@id/tv1"
+	           android:layout_alignParentRight="true"
+	           android:layout_alignParentEnd="true"
+	           android:paddingLeft="5sp"
+	           android:paddingStart="5sp"
+	           android:paddingRight="10sp"
+	           android:paddingEnd="10sp"
+	           android:textStyle="italic"
+	           android:textSize="20sp"
+	           android:textColor="#757575"
+	           android:gravity="center"
+	           android:text="@string/placeholder" />
+	       
+	       <View
+	            android:id="@+id/bar2"
+	            android:layout_width="match_parent"
+	            android:layout_height="1dip"
+	            android:layout_below="@id/tv2"
+	            android:background="#E0E0E0"
+	            android:layout_marginLeft="4dip"
+	            android:layout_marginRight="4dip" />
+	       
+	       <TextView
+	           android:id="@+id/field3"
+	           android:layout_width="wrap_content"
+	           android:layout_height="50sp"
+	           android:layout_below="@id/tv2"
+	           android:paddingLeft="10sp"
+	           android:paddingStart="10sp"
+	           android:paddingRight="5sp"
+	           android:paddingEnd="5sp"
+	           android:textStyle="italic"
+	           android:textSize="20sp"
+	           android:textColor="#757575"
+	           android:gravity="center"
+	           android:text="@string/field3" />
+	
+	       <TextView
+	           android:id="@+id/tv3"
+	           android:layout_width="wrap_content"
+	           android:layout_height="50sp"
+	           android:layout_below="@id/tv2"
+	           android:layout_alignParentRight="true"
+	           android:layout_alignParentEnd="true"
+	           android:paddingLeft="5sp"
+	           android:paddingStart="5sp"
+	           android:paddingRight="10sp"
+	           android:paddingEnd="10sp"
+	           android:textStyle="italic"
+	           android:textSize="20sp"
+	           android:textColor="#757575"
+	           android:gravity="center"
+	           android:text="@string/placeholder" />
+	       
+	       <View
+	            android:id="@+id/bar3"
+	            android:layout_width="match_parent"
+	            android:layout_height="1dip"
+	            android:layout_below="@id/tv3"
+	            android:background="#E0E0E0"
+	            android:layout_marginLeft="4dip"
+	            android:layout_marginRight="4dip" />
+	       
+	       <TextView
+	           android:id="@+id/field4"
+	           android:layout_width="wrap_content"
+	           android:layout_height="50sp"
+	           android:layout_below="@id/tv3"
+	           android:paddingLeft="10sp"
+	           android:paddingStart="10sp"
+	           android:paddingRight="5sp"
+	           android:paddingEnd="5sp"
+	           android:textStyle="italic"
+	           android:textSize="20sp"
+	           android:textColor="#757575"
+	           android:gravity="center"
+	           android:text="@string/field4" />
+	
+	       <TextView
+	           android:id="@+id/tv4"
+	           android:layout_width="wrap_content"
+	           android:layout_height="50sp"
+	           android:layout_below="@id/tv3"
+	           android:layout_alignParentRight="true"
+	           android:layout_alignParentEnd="true"
+	           android:paddingLeft="5sp"
+	           android:paddingStart="5sp"
+	           android:paddingRight="10sp"
+	           android:paddingEnd="10sp"
+	           android:textStyle="italic"
+	           android:textSize="20sp"
+	           android:textColor="#757575"
+	           android:gravity="center"
+	           android:text="@string/placeholder" />
+	       
+	       <View
+	            android:id="@+id/bar4"
+	            android:layout_width="match_parent"
+	            android:layout_height="1dip"
+	            android:layout_below="@id/tv4"
+	            android:background="#E0E0E0"
+	            android:layout_marginLeft="4dip"
+	            android:layout_marginRight="4dip" />
+	       
+	       <TextView
+	           android:id="@+id/field5"
+	           android:layout_width="wrap_content"
+	           android:layout_height="50sp"
+	           android:layout_below="@id/tv4"
+	           android:paddingLeft="10sp"
+	           android:paddingStart="10sp"
+	           android:paddingRight="5sp"
+	           android:paddingEnd="5sp"
+	           android:textStyle="italic"
+	           android:textSize="20sp"
+	           android:textColor="#757575"
+	           android:gravity="center"
+	           android:text="@string/field5" />
+	
+	       <TextView
+	           android:id="@+id/tv5"
+	           android:layout_width="wrap_content"
+	           android:layout_height="50sp"
+	           android:layout_below="@id/tv4"
+	           android:layout_alignParentRight="true"
+	           android:layout_alignParentEnd="true"
+	           android:paddingLeft="5sp"
+	           android:paddingStart="5sp"
+	           android:paddingRight="10sp"
+	           android:paddingEnd="10sp"
+	           android:textStyle="italic"
+	           android:textSize="20sp"
+	           android:textColor="#757575"
+	           android:gravity="center"
+	           android:text="@string/placeholder" />
+	       </RelativeLayout>
+	</ScrollView>
+       
+    <Button
+        android:id="@+id/button_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:alpha="0"
+        android:clickable="false"
+        android:textColor="#FFFFFF"
+        android:background="#00000000"
+        android:onClick="click_recent"
+        android:text="@string/recent_game" />
+    
+    <TextView
+           android:id="@+id/version"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentBottom="true"
+           android:layout_alignParentRight="true"
+           android:layout_alignParentEnd="true"
+           android:paddingLeft="10sp"
+           android:paddingStart="10sp"
+           android:paddingRight="10sp"
+           android:paddingEnd="10sp"
+           android:textStyle="italic"
+           android:textSize="12sp"
+           android:textColor="#FFFFFF"
+           android:gravity="center"
+           android:text="@string/version" />
+</RelativeLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name" translatable="false">APITest - League</string>
+    <string name="get_info" translatable="false">Get Info</string>
+    <string name="recent_game" translatable="false">Recent Game</string>
+    <string name="placeholder" translatable="false"></string>
+    <string name="enter_text" translatable="false">[Enter Summoner Name]</string>
+    <string name="field1" translatable="false">Summoner ID:</string>
+    <string name="field2" translatable="false">Summoner Name:</string>
+    <string name="field3" translatable="false">Summoner Icon ID:</string>
+    <string name="field4" translatable="false">Summoner Level:</string>
+    <string name="field5" translatable="false">Revision Date:</string>
+    <string name="field_gameid" translatable="false">Game ID:</string>
+    <string name="field_gamemode" translatable="false">Game Mode:</string>
+    <string name="field_gametype" translatable="false">Game Type:</string>
+    <string name="field_goldearned" translatable="false">Gold Earned:</string>
+    <string name="field_ipearned" translatable="false">IP Earned:</string>
+    <string name="version" translatable="false">0.1.7.0</string>
+    <string name="title_activity_recent_games">RecentGames</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>
