@@ -85,20 +85,20 @@ public class RecentGames extends Activity {
 					JSONArray fellowPlayers = game1.getJSONArray("fellowPlayers");
 					JSONObject stats = game1.getJSONObject("stats");
 					
-					game_info = new GameInfo(game1.getString("championId"),
-							game1.getString("createDate"), game1.getString("gameId"),
-							game1.getString("gameMode"), game1.getString("gameType"),
-							game1.getString("invalid"), game1.getString("ipEarned"),
-							game1.getString("mapId"), game1.getString("level"),
-							game1.getString("spell1"), game1.getString("spell2"),
-							game1.getString("subType"), game1.getString("teamId"));
+					game_info = new GameInfo(game1.optString("championId"),
+							game1.optString("createDate"), game1.optString("gameId"),
+							game1.optString("gameMode"), game1.optString("gameType"),
+							game1.optString("invalid"), game1.optString("ipEarned"),
+							game1.optString("mapId"), game1.optString("level"),
+							game1.optString("spell1"), game1.optString("spell2"),
+							game1.optString("subType"), game1.optString("teamId"));
 					game_info.setPlayers(fellowPlayers);
 					game_info.setStats(stats);
 										
 					field2.setText(game_info.getGameId());
 					field3.setText(game_info.getGameMode());
 					field4.setText(game_info.getGameType());
-					field4.setText(game_info.getIpEarned());
+					field5.setText(game_info.getIpEarned());
 					field6.setText(game_info.stats.getGoldEarned());
 					
 				} catch (JSONException e) { 

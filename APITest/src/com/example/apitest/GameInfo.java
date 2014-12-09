@@ -90,15 +90,15 @@ public class GameInfo {
 	}
 	
 	public void setStats(JSONObject stat) throws JSONException{
-		stats = new Stats(stat.getString("assists"), stat.getString("championsKilled"),stat.getString("goldEarned"),
-				stat.getString("goldSpent"),stat.getString("item0"),stat.getString("item1"),
-				stat.getString("item2"),stat.getString("item3"),stat.getString("killingSprees"),
-				stat.getString("largestKillingSpree"),stat.getString("largestMultiKill"),stat.getString("level"),
-				stat.getString("magicDamageDealtToChampions"),stat.getString("minionsKilled"),stat.getString("neutralMinionsKilled"),
-				stat.getString("neutralMinionsKilledYourJungle"),stat.getString("numDeaths"),stat.getString("physicalDamageDealtToChampions"),
-				stat.getString("physicalDamageTaken"),stat.getString("team"),stat.getString("timePlayed"),
-				stat.getString("totalDamageDealt"),stat.getString("totalDamageDealtToChampions"),stat.getString("totalDamageTaken"),
-				stat.getString("trueDamageTaken"),stat.getString("totalTimeCrowdControlDealt"),stat.getString("win"));
+		stats = new Stats(stat.optString("assists"), stat.optString("championsKilled"),stat.optString("goldEarned"),
+				stat.optString("goldSpent"),stat.optString("item0"),stat.optString("item1"),
+				stat.optString("item2"),stat.optString("item3"),stat.optString("killingSprees"),
+				stat.optString("largestKillingSpree"),stat.optString("largestMultiKill"),stat.optString("level"),
+				stat.optString("magicDamageDealtToChampions"),stat.optString("minionsKilled"),stat.optString("neutralMinionsKilled"),
+				stat.optString("neutralMinionsKilledYourJungle"),stat.optString("numDeaths"),stat.optString("physicalDamageDealtToChampions"),
+				stat.optString("physicalDamageTaken"),stat.optString("team"),stat.optString("timePlayed"),
+				stat.optString("totalDamageDealt"),stat.optString("totalDamageDealtToChampions"),stat.optString("totalDamageTaken"),
+				stat.optString("trueDamageTaken"),stat.optString("totalTimeCrowdControlDealt"),stat.optString("win"));
 	}
 	
 	public void setPlayers(JSONArray players){
@@ -106,56 +106,56 @@ public class GameInfo {
 			if(i==0){
 				try{
 					JSONObject object1 = players.getJSONObject(i);
-					player1 = new FellowPlayer(object1.getString("championId"),
-							object1.getString("summonerId"), object1.getString("teamId"));
+					player1 = new FellowPlayer(object1.optString("championId"),
+							object1.optString("summonerId"), object1.optString("teamId"));
 				} catch (JSONException e){}
 			} else if(i == 1){
 				try{
 					JSONObject object1 = players.getJSONObject(i);
-					player2 = new FellowPlayer(object1.getString("championId"),
-							object1.getString("summonerId"), object1.getString("teamId"));
+					player2 = new FellowPlayer(object1.optString("championId"),
+							object1.optString("summonerId"), object1.optString("teamId"));
 				} catch (JSONException e){}
 			} else if(i == 2){
 				try{
 					JSONObject object1 = players.getJSONObject(i);
-					player3 = new FellowPlayer(object1.getString("championId"),
-							object1.getString("summonerId"), object1.getString("teamId"));
+					player3 = new FellowPlayer(object1.optString("championId"),
+							object1.optString("summonerId"), object1.optString("teamId"));
 				} catch (JSONException e){}
 			} else if(i == 3){
 				try{
 					JSONObject object1 = players.getJSONObject(i);
-					player4 = new FellowPlayer(object1.getString("championId"),
-							object1.getString("summonerId"), object1.getString("teamId"));
+					player4 = new FellowPlayer(object1.optString("championId"),
+							object1.optString("summonerId"), object1.optString("teamId"));
 				} catch (JSONException e){}
 			} else if(i == 4){
 				try{
 					JSONObject object1 = players.getJSONObject(i);
-					player5 = new FellowPlayer(object1.getString("championId"),
-							object1.getString("summonerId"), object1.getString("teamId"));
+					player5 = new FellowPlayer(object1.optString("championId"),
+							object1.optString("summonerId"), object1.optString("teamId"));
 				} catch (JSONException e){}
 			} else if(i == 5){
 				try{
 					JSONObject object1 = players.getJSONObject(i);
-					player6 = new FellowPlayer(object1.getString("championId"),
-							object1.getString("summonerId"), object1.getString("teamId"));
+					player6 = new FellowPlayer(object1.optString("championId"),
+							object1.optString("summonerId"), object1.optString("teamId"));
 				} catch (JSONException e){}
 			} else if(i == 6){
 				try{
 					JSONObject object1 = players.getJSONObject(i);
-					player7 = new FellowPlayer(object1.getString("championId"),
-							object1.getString("summonerId"), object1.getString("teamId"));
+					player7 = new FellowPlayer(object1.optString("championId"),
+							object1.optString("summonerId"), object1.optString("teamId"));
 				} catch (JSONException e){}
 			} else if(i == 7){
 				try{
 					JSONObject object1 = players.getJSONObject(i);
-					player8 = new FellowPlayer(object1.getString("championId"),
-							object1.getString("summonerId"), object1.getString("teamId"));
+					player8 = new FellowPlayer(object1.optString("championId"),
+							object1.optString("summonerId"), object1.optString("teamId"));
 				} catch (JSONException e){}
 			} else if(i == 8){
 				try{
 					JSONObject object1 = players.getJSONObject(i);
-					player9 = new FellowPlayer(object1.getString("championId"),
-							object1.getString("summonerId"), object1.getString("teamId"));
+					player9 = new FellowPlayer(object1.optString("championId"),
+							object1.optString("summonerId"), object1.optString("teamId"));
 				} catch (JSONException e){}
 			}
 		}
