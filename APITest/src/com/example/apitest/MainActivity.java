@@ -35,11 +35,12 @@ public class MainActivity extends Activity {
 		sum_id,		//Displays summoner information
 		sum_name,
 		sum_icon_id,
-		sum_level,
-		revision_date;
+		sum_level;
+		//revision_date;
 	 Button
 		buttonRecent,
-		btSubmit;		//Button that activates the network call
+		btSubmit,
+		testBtn;
 	String
 		summoner;
 	SummonerInfo
@@ -63,9 +64,10 @@ public class MainActivity extends Activity {
 		sum_name = (TextView)findViewById(R.id.tv2);
 		sum_icon_id = (TextView)findViewById(R.id.tv3);
 		sum_level = (TextView)findViewById(R.id.tv4);
-		revision_date = (TextView)findViewById(R.id.tv5);
+		//revision_date = (TextView)findViewById(R.id.tv5);
 		btSubmit = (Button)findViewById(R.id.button1);
 		buttonRecent = (Button)findViewById(R.id.button_bottom);
+		testBtn = (Button)findViewById(R.id.button_version);
 		
 		if(summoner_info != null){
 			buttonRecent.setAlpha(1);
@@ -90,7 +92,7 @@ public class MainActivity extends Activity {
 			sum_name.setText("");
 			sum_icon_id.setText("");
 			sum_level.setText("");
-			revision_date.setText("");
+			//revision_date.setText("");
 		}//else
 	}
 	
@@ -108,7 +110,7 @@ public class MainActivity extends Activity {
 		protected void onPostExecute(String result) {
 			if(result.equals("Unable to retrieve web page. URL may be invalid.")){
 				sum_id.setText("Player Not Found."); sum_name.setText("");
-				sum_icon_id.setText(""); sum_level.setText(""); revision_date.setText("");
+				sum_icon_id.setText(""); sum_level.setText(""); //revision_date.setText("");
 			}
 			else {
 				try {
@@ -119,13 +121,13 @@ public class MainActivity extends Activity {
 					summoner_info.setName(j.getString("name"));
 					summoner_info.setIcon(j.getString("profileIconId"));
 					summoner_info.setLevel(j.getString("summonerLevel"));
-					summoner_info.setRevision(j.getString("revisionDate"));
+					//summoner_info.setRevision(j.getString("revisionDate"));
 					
 					sum_id.setText(summoner_info.getID());
 					sum_name.setText(summoner_info.getName());
 					sum_icon_id.setText(summoner_info.getIcon());
 					sum_level.setText(summoner_info.getLevel());
-					revision_date.setText(summoner_info.getRevision());
+					//revision_date.setText(summoner_info.getRevision());
 					
 					buttonRecent.setAlpha(1);
 					buttonRecent.setClickable(true);
@@ -176,6 +178,11 @@ public class MainActivity extends Activity {
 		Bundle bundle = new Bundle();  
         bundle.putParcelable("Summoner", summoner_info);  
         intent.putExtras(bundle);  
+		startActivity(intent);
+	}
+	
+	public void click_version(View view) {
+		Intent intent = new Intent(getApplicationContext(), LastGamePlayed.class);
 		startActivity(intent);
 	}
 }//end Activity

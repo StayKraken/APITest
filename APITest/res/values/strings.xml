@@ -16,8 +16,10 @@
     <string name="field_gametype" translatable="false">Game Type:</string>
     <string name="field_goldearned" translatable="false">Gold Earned:</string>
     <string name="field_ipearned" translatable="false">IP Earned:</string>
-    <string name="version" translatable="false">0.1.7.0</string>
-    <string name="title_activity_recent_games">RecentGames</string>
+    <string name="version" translatable="false">0.1.8.5</string>
+    <string name="title_activity_last_game_played">Last Game Played</string>
+    <string name="title_activity_recent_games">Recent Games</string>
     <string name="hello_world">Hello world!</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

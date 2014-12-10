@@ -66,7 +66,7 @@
 	       <TextView
 	           android:id="@+id/tv1"
 	           android:layout_width="wrap_content"
-	           android:layout_height="50sp"
+	           android:layout_height="wrap_content"
 	           android:layout_below="@id/button1"
 	           android:layout_alignParentRight="true"
 	           android:layout_alignParentEnd="true"
@@ -203,6 +203,7 @@
 	           android:gravity="center"
 	           android:text="@string/placeholder" />
 	       
+	       <!-- 
 	       <View
 	            android:id="@+id/bar4"
 	            android:layout_width="match_parent"
@@ -243,6 +244,7 @@
 	           android:textColor="#757575"
 	           android:gravity="center"
 	           android:text="@string/placeholder" />
+	            -->
 	       </RelativeLayout>
 	</ScrollView>
        
@@ -260,8 +262,8 @@
         android:onClick="click_recent"
         android:text="@string/recent_game" />
     
-    <TextView
-           android:id="@+id/version"
+    <Button
+           android:id="@+id/button_version"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_alignParentBottom="true"
@@ -274,6 +276,8 @@
            android:textStyle="italic"
            android:textSize="12sp"
            android:textColor="#FFFFFF"
+           android:background="#00000000"
+           android:onClick="click_version"
            android:gravity="center"
            android:text="@string/version" />
 </RelativeLayout>
