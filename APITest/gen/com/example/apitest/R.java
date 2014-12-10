@@ -11,10 +11,11 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int icon=0x7f020001;
-        public static final int leaguebackground=0x7f020002;
-        public static final int leaguelogo=0x7f020003;
+        public static final int aatrox=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int icon=0x7f020002;
+        public static final int leaguebackground=0x7f020003;
+        public static final int leaguelogo=0x7f020004;
     }
     public static final class id {
         public static final int bar1=0x7f060005;
@@ -24,6 +25,7 @@ public final class R {
         public static final int bar5=0x7f060018;
         public static final int button1=0x7f060002;
         public static final int button_bottom=0x7f060011;
+        public static final int champion=0x7f06001a;
         public static final int et1=0x7f060001;
         public static final int field1=0x7f060003;
         public static final int field2=0x7f060006;

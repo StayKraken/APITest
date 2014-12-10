@@ -14,11 +14,15 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class RecentGames extends Activity {
@@ -36,6 +40,8 @@ public class RecentGames extends Activity {
 		field4,
 		field5,
 		field6;
+	ImageView
+		champion;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +54,7 @@ public class RecentGames extends Activity {
 		field4 = (TextView)findViewById(R.id.recent_gametype);
 		field5 = (TextView)findViewById(R.id.recent_ipearned);
 		field6 = (TextView)findViewById(R.id.recent_goldearned);
+		champion = (ImageView)findViewById(R.id.champion);
 		
 		field1.setText(summoner_info.getName());
 		
@@ -60,6 +67,7 @@ public class RecentGames extends Activity {
 		} else {
 			field2.setText("No network connection available");
 		}
+		setBitmapFromAsset();
 	}
 	
 	private class DownloadWebpageTask extends AsyncTask<String,Void, String> {
@@ -142,4 +150,17 @@ public class RecentGames extends Activity {
 		reader.read(buffer);
 		return new String(buffer);
 	}//readIt
+	
+	private void setBitmapFromAsset()
+    {
+        AssetManager assetManager = getAssets();
+        InputStream istr = null;
+        try {
+            istr = assetManager.open("champion/Fizz.png");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Bitmap bitmap = BitmapFactory.decodeStream(istr);
+        champion.setImageBitmap(bitmap);
+    }		
 }
