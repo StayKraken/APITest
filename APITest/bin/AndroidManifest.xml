@@ -29,6 +29,10 @@
             android:name=".RecentGames"
             android:label="@string/title_activity_recent_games" >
         </activity>
+        <activity
+            android:name=".LastGamePlayed"
+            android:label="@string/title_activity_last_game_played" >
+        </activity>
     </application>
 
 </manifest>
