@@ -7,11 +7,9 @@ import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -34,12 +32,12 @@ public class RecentGames extends Activity {
 	SummonerInfo
 		summoner_info;
 	TextView
-		field1,
-		field2,
-		field3,
-		field4,
-		field5,
-		field6;
+		summoner_field,
+		gameid_field,
+		gamemode_field,
+		gametype_field,
+		ipearned_field,
+		goldearned_field;
 	ImageView
 		champion;
 
@@ -48,15 +46,15 @@ public class RecentGames extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_recent_games);
 		summoner_info = (SummonerInfo)getIntent().getParcelableExtra("Summoner");
-		field1 = (TextView)findViewById(R.id.recent_summoner);
-		field2 = (TextView)findViewById(R.id.recent_gameid);
-		field3 = (TextView)findViewById(R.id.recent_gamemode);
-		field4 = (TextView)findViewById(R.id.recent_gametype);
-		field5 = (TextView)findViewById(R.id.recent_ipearned);
-		field6 = (TextView)findViewById(R.id.recent_goldearned);
+		summoner_field = (TextView)findViewById(R.id.recent_summoner);
+		gameid_field = (TextView)findViewById(R.id.recent_gameid);
+		gamemode_field = (TextView)findViewById(R.id.recent_gamemode);
+		gametype_field = (TextView)findViewById(R.id.recent_gametype);
+		ipearned_field = (TextView)findViewById(R.id.recent_ipearned);
+		goldearned_field = (TextView)findViewById(R.id.recent_goldearned);
 		champion = (ImageView)findViewById(R.id.champion);
 		
-		field1.setText(summoner_info.getName());
+		summoner_field.setText(summoner_info.getName());
 		
 		stringURL = "https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/" + summoner_info.getID() + "/recent?api_key=d29d7e08-c066-4aad-b6fc-3e285ea5ceae";
 		
@@ -65,7 +63,7 @@ public class RecentGames extends Activity {
 		if(networkInfo != null && networkInfo.isConnected()) {
 			new DownloadWebpageTask().execute(stringURL);
 		} else {
-			field2.setText("No network connection available");
+			gameid_field.setText("No network connection available");
 		}
 		setBitmapFromAsset();
 	}
@@ -83,7 +81,7 @@ public class RecentGames extends Activity {
 		@Override
 		protected void onPostExecute(String result) {
 			if(result.equals("Unable to retrieve web page. URL may be invalid.")){
-				field2.setText("Game Not Found.");
+				gameid_field.setText("Game Not Found.");
 			}
 			else {
 				try {
@@ -103,14 +101,14 @@ public class RecentGames extends Activity {
 					game_info.setPlayers(fellowPlayers);
 					game_info.setStats(stats);
 										
-					field2.setText(game_info.getGameId());
-					field3.setText(game_info.getGameMode());
-					field4.setText(game_info.getGameType());
-					field5.setText(game_info.getIpEarned());
-					field6.setText(game_info.stats.getGoldEarned());
+					gameid_field.setText(game_info.getGameId());
+					gamemode_field.setText(game_info.getGameMode());
+					gametype_field.setText(game_info.getGameType());
+					ipearned_field.setText(game_info.getIpEarned());
+					goldearned_field.setText(game_info.stats.getGoldEarned());
 					
 				} catch (JSONException e) { 
-					field2.setText(e.toString());
+					gameid_field.setText(e.toString());
 				}
 			}
 		}

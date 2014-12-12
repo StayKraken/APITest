@@ -7,10 +7,8 @@ import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -30,49 +28,38 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 @SuppressLint("DefaultLocale")
-@SuppressWarnings("unused")
 public class MainActivity extends Activity {
 	private static final String DEBUG_TAG = "HttpExample";
-	private EditText sumName;		//Receives summoner name input
+	EditText
+		user_text;
 	char[]
 		j;
-	private TextView
-		sum_id,		//Displays summoner information
-		sum_name,
-		sum_icon_id,
-		sum_level;
-		//revision_date;
 	 Button
-		buttonRecent,
-		btSubmit,
-		testBtn;
+		recent_games_button,
+		submit_button,
+		test_button;
+	 ImageView
+		summoner_icon_image;
 	String
 		summoner;
 	SummonerInfo
 		summoner_info;
-	ImageView
-		summoner_icon;
-	//String[]
-		//summoner_info = new String[5];
+	TextView
+		error_placeholder,
+		sum_id,
+		sum_name,
+		sum_icon_id,
+		sum_level;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		//.onCreate "creates" the activity. Once onCreate() finishes execution, the system
-		//calls onStart() and onResume() in quick succession. These are two of the three static
-		//states
 		super.onCreate(savedInstanceState);
-		//Sets the user interface layout for this Activity
-		//The layout file is defined in the project res/layout/main_activity.xml file
 		setContentView(R.layout.activity_main);
 		
-		//Initialize EditText, TextView, and Button members so we can use them later
-		sumName = (EditText)findViewById(R.id.et1);
-		
-		sumName.setOnKeyListener(new OnKeyListener()
-		{
+		user_text = (EditText)findViewById(R.id.et1);
+		user_text.setOnKeyListener(new OnKeyListener() {
 		    public boolean onKey(View v, int keyCode, KeyEvent event)
 		    {
 		        if (event.getAction() == KeyEvent.ACTION_DOWN)
@@ -84,7 +71,6 @@ public class MainActivity extends Activity {
 						try {
 							myClickHandler(v);
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 		                    return true;
@@ -94,27 +80,27 @@ public class MainActivity extends Activity {
 		        }
 		        return false;
 		    }
-		});		
-		
+		});	
 		sum_id = (TextView)findViewById(R.id.tv1);
 		sum_name = (TextView)findViewById(R.id.tv2);
 		sum_icon_id = (TextView)findViewById(R.id.tv3);
 		sum_level = (TextView)findViewById(R.id.tv4);
-		//revision_date = (TextView)findViewById(R.id.tv5);
-		btSubmit = (Button)findViewById(R.id.button1);
-		buttonRecent = (Button)findViewById(R.id.button_bottom);
-		testBtn = (Button)findViewById(R.id.button_version);
-		summoner_icon = (ImageView)findViewById(R.id.summoner_icon);
+		error_placeholder = (TextView)findViewById(R.id.tv5);
+		submit_button = (Button)findViewById(R.id.button1);
+		recent_games_button = (Button)findViewById(R.id.button_bottom);
+		test_button= (Button)findViewById(R.id.button_test);
+		summoner_icon_image = (ImageView)findViewById(R.id.summoner_icon);
+		
 		if(summoner_info != null){
-			buttonRecent.setAlpha(1);
+			recent_games_button.setAlpha(1);
+			test_button.setAlpha(1);
 		} else
-			buttonRecent.setAlpha(0);
+			recent_games_button.setAlpha(0);
+		test_button.setAlpha(0);
 	}
-	
-	//40474574
 
 	public void myClickHandler(View view)throws IOException {
-		summoner = sumName.getText().toString().toLowerCase().trim();
+		summoner = user_text.getText().toString().toLowerCase().trim();
 		String stringURL = "https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/" + summoner + "?api_key=d29d7e08-c066-4aad-b6fc-3e285ea5ceae";
 		
 		summoner_info = new SummonerInfo();
@@ -122,7 +108,12 @@ public class MainActivity extends Activity {
 		ConnectivityManager connMgr = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 		if(networkInfo != null && networkInfo.isConnected()) {
-			new DownloadWebpageTask().execute(stringURL);
+			try{
+				new DownloadWebpageTask().execute(stringURL);
+			}catch(Exception e){
+				error_placeholder.setText(e.toString());
+			}
+			
 		} else {
 			sum_id.setText("No network connection available");
 			sum_name.setText("");
@@ -145,9 +136,11 @@ public class MainActivity extends Activity {
 		@Override
 		protected void onPostExecute(String result) {
 			if(result.equals("Unable to retrieve web page. URL may be invalid.")){
-				sum_id.setText("Player Not Found."); sum_name.setText("");
+				sum_id.setText("Player Not Found.");
+				sum_name.setText("");
 				sum_icon_id.setText("");
-				sum_level.setText(""); //revision_date.setText("");
+				sum_level.setText("");
+				//revision_date.setText("");
 			}
 			else {
 				try {
@@ -163,14 +156,15 @@ public class MainActivity extends Activity {
 					sum_id.setText(summoner_info.getID());
 					sum_name.setText(summoner_info.getName());
 					//sum_icon_id.setText(summoner_info.getIcon());
-					setBitmapFromAsset(summoner_info.getIcon());					
 					sum_level.setText(summoner_info.getLevel());
 					//revision_date.setText(summoner_info.getRevision());
 					
-					buttonRecent.setAlpha(1);
-					buttonRecent.setClickable(true);
-										
-					//"https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/" + summoner_info[0] + "/recent?api_key=d29d7e08-c066-4aad-b6fc-3e285ea5ceae"
+					setBitmapFromAsset(summoner_info.getIcon());
+					
+					recent_games_button.setAlpha(1);
+					test_button.setAlpha(1);
+					
+					recent_games_button.setClickable(true);
 				} catch (JSONException e) { }
 			}
 		}
@@ -193,7 +187,7 @@ public class MainActivity extends Activity {
 			Log.d(DEBUG_TAG, "The response is: " + response);
 			is = conn.getInputStream();
 			
-			String contentAsString = readIt(is, len).trim();
+			String contentAsString = readStream(is, len).trim();
 			return contentAsString;
 			
 		} finally {
@@ -203,7 +197,7 @@ public class MainActivity extends Activity {
 	}
 	
 	//Reads an InputStream and converts it to a String.
-	public String readIt(InputStream stream, int len) throws IOException, UnsupportedEncodingException {
+	public String readStream(InputStream stream, int len) throws IOException, UnsupportedEncodingException {
 		Reader reader = null;
 		reader = new InputStreamReader(stream, "UTF-8");
 		char[] buffer = new char[len];
@@ -220,10 +214,16 @@ public class MainActivity extends Activity {
 	}
 	
 	public void click_version(View view) {
-		Intent intent = new Intent(getApplicationContext(), LastGamePlayed.class);
-		startActivity(intent);
+		try{
+			Intent intent = new Intent(getApplicationContext(), LastGamePlayed.class);
+			Bundle bundle = new Bundle();
+	        bundle.putParcelable("Summoner", summoner_info);  
+	        intent.putExtras(bundle);
+			startActivity(intent);
+		}catch(Exception e){
+			error_placeholder.setText(e.toString());
+		}
 	}
-	
 	
 	private void setBitmapFromAsset(String sum_icon)
     {
@@ -231,13 +231,11 @@ public class MainActivity extends Activity {
         InputStream istr = null;
         try {
             istr = assetManager.open("profileicon/" + sum_icon + ".png");
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            error_placeholder.setText(e.toString());
         }
         Bitmap bitmap = BitmapFactory.decodeStream(istr);
-        summoner_icon.setImageBitmap(bitmap);
-        summoner_icon.setAlpha((float)1);
+        summoner_icon_image.setImageBitmap(bitmap);
+        summoner_icon_image.setAlpha((float)1);
     }
-	
-	
 }//end Activity

@@ -13,14 +13,19 @@ import android.support.v4.view.ViewPager;
 
 
 public class LastGamePlayed extends FragmentActivity implements TabListener {
-	
 	ViewPager viewPager;
 	ActionBar actionBar;
+	
+GameInfo
+	game_info;
+SummonerInfo
+	summoner_info;
 	
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_last_game_played);
         
+        summoner_info = (SummonerInfo)getIntent().getParcelableExtra("Summoner");
         viewPager=(ViewPager)findViewById(R.id.pager);
         viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener(){
@@ -38,20 +43,16 @@ public class LastGamePlayed extends FragmentActivity implements TabListener {
 				actionBar.setSelectedNavigationItem(arg0);
 			}
         });
-        
         actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        
         ActionBar.Tab tab1 = actionBar.newTab();
         tab1.setText("Game Data");
         tab1.setTabListener(this);
-        
         ActionBar.Tab tab2 = actionBar.newTab();
         tab2.setText("Player Stats");
         tab2.setTabListener(this);
-        
         actionBar.addTab(tab1);
-        actionBar.addTab(tab2);
+        actionBar.addTab(tab2);        
     }
 
 	@Override
@@ -87,6 +88,5 @@ class MyAdapter extends FragmentPagerAdapter{
 	@Override
 	public int getCount() {
 		return 2;
-	}
-	
+	}	
 }

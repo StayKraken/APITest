@@ -2,13 +2,13 @@
 <resources>
 
     <string name="app_name" translatable="false">APITest - League</string>
-    <string name="get_info" translatable="false">Get Info</string>
+    <string name="get_info" translatable="false">Retrieve Summoner</string>
     <string name="recent_game" translatable="false">Recent Game</string>
     <string name="placeholder" translatable="false"></string>
     <string name="enter_text" translatable="false">[Enter Summoner Name]</string>
     <string name="field1" translatable="false">Summoner ID:</string>
     <string name="field2" translatable="false">Summoner Name:</string>
-    <string name="field3" translatable="false">Summoner Icon:</string>
+    <string name="field3" translatable="false">Summoner Icon ID:</string>
     <string name="field4" translatable="false">Summoner Level:</string>
     <string name="field5" translatable="false">Revision Date:</string>
     <string name="field_gameid" translatable="false">Game ID:</string>
@@ -17,9 +17,10 @@
     <string name="field_goldearned" translatable="false">Gold Earned:</string>
     <string name="field_ipearned" translatable="false">IP Earned:</string>
     <string name="version" translatable="false">0.1.8.5</string>
-    <string name="title_activity_last_game_played">Last Game Played</string>
-    <string name="title_activity_recent_games">Recent Games</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_last_game_played" translatable="false">Last Game Played</string>
+    <string name="title_activity_recent_games" translatable="false">Recent Games</string>
+    <string name="hello_world" translatable="false">Hello world!</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="DNC" translatable="false">Do Not Click.</string>
 
 </resources>
