@@ -18,7 +18,12 @@
     <ScrollView 
             android:layout_width="match_parent"
     		android:layout_height="wrap_content"
-    		android:padding="5sp">	
+    		android:paddingTop="5sp"
+        	android:paddingBottom="50sp"
+    		android:paddingStart="5sp"
+    		android:paddingEnd="5sp" 
+    		android:paddingLeft="5sp"
+    		android:paddingRight="5sp"  >
 	    <RelativeLayout
 	        android:layout_width="match_parent"
 	    	android:layout_height="wrap_content"
@@ -41,17 +46,17 @@
 	        	android:layout_width="match_parent"
 	        	android:layout_height="50sp"
 	        	android:layout_below="@id/et1"
-	        	android:background="#00000000"
+	        	android:background="@drawable/button_custom"
 	        	android:textStyle="bold"
 	        	android:textSize="20sp"
-	        	android:textColor="#757575"
+	        	android:textColor="#EEEEEE"
 	        	android:onClick="myClickHandler"
 	        	android:text="@string/get_info" />
 		    
 		    <TextView
 	           android:id="@+id/field1"
 	           android:layout_width="wrap_content"
-	           android:layout_height="wrap_content"
+	           android:layout_height="50sp"
 	           android:layout_below="@id/button1"
 	           android:paddingLeft="10sp"
 	           android:paddingStart="5sp"
@@ -66,7 +71,7 @@
 	       <TextView
 	           android:id="@+id/tv1"
 	           android:layout_width="wrap_content"
-	           android:layout_height="wrap_content"
+	           android:layout_height="50sp"
 	           android:layout_below="@id/button1"
 	           android:layout_alignParentRight="true"
 	           android:layout_alignParentEnd="true"
@@ -144,8 +149,21 @@
 	           android:textColor="#757575"
 	           android:gravity="center"
 	           android:text="@string/field3" />
+	       
+ 	       <ImageView
+ 	           android:id="@+id/summoner_icon"
+ 	           android:layout_width="50sp"
+ 	           android:layout_height="50sp"
+ 	           android:layout_alignParentEnd="true"
+ 	           android:layout_alignParentRight="true"
+ 	           android:padding="5sp"
+ 	           android:layout_below="@id/tv2"
+ 	           android:adjustViewBounds="true"
+ 	           android:contentDescription="@string/app_name"
+ 	           android:alpha="0"
+ 	           android:src="@drawable/aatrox" />
 	
-	       <TextView
+	      <TextView
 	           android:id="@+id/tv3"
 	           android:layout_width="wrap_content"
 	           android:layout_height="50sp"
@@ -161,6 +179,7 @@
 	           android:textColor="#757575"
 	           android:gravity="center"
 	           android:text="@string/placeholder" />
+	  
 	       
 	       <View
 	            android:id="@+id/bar3"

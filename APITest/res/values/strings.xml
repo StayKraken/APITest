@@ -8,7 +8,7 @@
     <string name="enter_text" translatable="false">[Enter Summoner Name]</string>
     <string name="field1" translatable="false">Summoner ID:</string>
     <string name="field2" translatable="false">Summoner Name:</string>
-    <string name="field3" translatable="false">Summoner Icon ID:</string>
+    <string name="field3" translatable="false">Summoner Icon:</string>
     <string name="field4" translatable="false">Summoner Level:</string>
     <string name="field5" translatable="false">Revision Date:</string>
     <string name="field_gameid" translatable="false">Game ID:</string>

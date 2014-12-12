@@ -7,20 +7,28 @@ import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.View.OnKeyListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +53,8 @@ public class MainActivity extends Activity {
 		summoner;
 	SummonerInfo
 		summoner_info;
+	ImageView
+		summoner_icon;
 	//String[]
 		//summoner_info = new String[5];
 	
@@ -60,6 +70,32 @@ public class MainActivity extends Activity {
 		
 		//Initialize EditText, TextView, and Button members so we can use them later
 		sumName = (EditText)findViewById(R.id.et1);
+		
+		sumName.setOnKeyListener(new OnKeyListener()
+		{
+		    public boolean onKey(View v, int keyCode, KeyEvent event)
+		    {
+		        if (event.getAction() == KeyEvent.ACTION_DOWN)
+		        {
+		            switch (keyCode)
+		            {
+		                case KeyEvent.KEYCODE_DPAD_CENTER:
+		                case KeyEvent.KEYCODE_ENTER:
+						try {
+							myClickHandler(v);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+		                    return true;
+		                default:
+		                    break;
+		            }
+		        }
+		        return false;
+		    }
+		});		
+		
 		sum_id = (TextView)findViewById(R.id.tv1);
 		sum_name = (TextView)findViewById(R.id.tv2);
 		sum_icon_id = (TextView)findViewById(R.id.tv3);
@@ -68,7 +104,7 @@ public class MainActivity extends Activity {
 		btSubmit = (Button)findViewById(R.id.button1);
 		buttonRecent = (Button)findViewById(R.id.button_bottom);
 		testBtn = (Button)findViewById(R.id.button_version);
-		
+		summoner_icon = (ImageView)findViewById(R.id.summoner_icon);
 		if(summoner_info != null){
 			buttonRecent.setAlpha(1);
 		} else
@@ -110,7 +146,8 @@ public class MainActivity extends Activity {
 		protected void onPostExecute(String result) {
 			if(result.equals("Unable to retrieve web page. URL may be invalid.")){
 				sum_id.setText("Player Not Found."); sum_name.setText("");
-				sum_icon_id.setText(""); sum_level.setText(""); //revision_date.setText("");
+				sum_icon_id.setText("");
+				sum_level.setText(""); //revision_date.setText("");
 			}
 			else {
 				try {
@@ -125,7 +162,8 @@ public class MainActivity extends Activity {
 					
 					sum_id.setText(summoner_info.getID());
 					sum_name.setText(summoner_info.getName());
-					sum_icon_id.setText(summoner_info.getIcon());
+					//sum_icon_id.setText(summoner_info.getIcon());
+					setBitmapFromAsset(summoner_info.getIcon());					
 					sum_level.setText(summoner_info.getLevel());
 					//revision_date.setText(summoner_info.getRevision());
 					
@@ -185,4 +223,21 @@ public class MainActivity extends Activity {
 		Intent intent = new Intent(getApplicationContext(), LastGamePlayed.class);
 		startActivity(intent);
 	}
+	
+	
+	private void setBitmapFromAsset(String sum_icon)
+    {
+        AssetManager assetManager = getAssets();
+        InputStream istr = null;
+        try {
+            istr = assetManager.open("profileicon/" + sum_icon + ".png");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Bitmap bitmap = BitmapFactory.decodeStream(istr);
+        summoner_icon.setImageBitmap(bitmap);
+        summoner_icon.setAlpha((float)1);
+    }
+	
+	
 }//end Activity

@@ -12,40 +12,44 @@ public final class R {
     }
     public static final class drawable {
         public static final int aatrox=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int icon=0x7f020002;
-        public static final int leaguebackground=0x7f020003;
-        public static final int leaguelogo=0x7f020004;
+        public static final int button_custom=0x7f020001;
+        public static final int button_default=0x7f020002;
+        public static final int button_pressed=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int icon=0x7f020005;
+        public static final int leaguebackground=0x7f020006;
+        public static final int leaguelogo=0x7f020007;
     }
     public static final class id {
         public static final int bar1=0x7f060006;
         public static final int bar2=0x7f060009;
-        public static final int bar3=0x7f06000c;
-        public static final int bar4=0x7f060015;
-        public static final int bar5=0x7f060017;
+        public static final int bar3=0x7f06000d;
+        public static final int bar4=0x7f060016;
+        public static final int bar5=0x7f060018;
         public static final int button1=0x7f060003;
-        public static final int button_bottom=0x7f06000f;
-        public static final int button_version=0x7f060010;
-        public static final int champion=0x7f06001a;
+        public static final int button_bottom=0x7f060010;
+        public static final int button_version=0x7f060011;
+        public static final int champion=0x7f06001b;
         public static final int et1=0x7f060002;
         public static final int field1=0x7f060004;
         public static final int field2=0x7f060007;
         public static final int field3=0x7f06000a;
-        public static final int field4=0x7f06000d;
-        public static final int field5=0x7f060018;
+        public static final int field4=0x7f06000e;
+        public static final int field5=0x7f060019;
         public static final int pager=0x7f060000;
         public static final int r1=0x7f060001;
-        public static final int recent_gameid=0x7f060012;
-        public static final int recent_gamemode=0x7f060013;
-        public static final int recent_gametype=0x7f060014;
-        public static final int recent_goldearned=0x7f060019;
-        public static final int recent_ipearned=0x7f060016;
-        public static final int recent_summoner=0x7f060011;
+        public static final int recent_gameid=0x7f060013;
+        public static final int recent_gamemode=0x7f060014;
+        public static final int recent_gametype=0x7f060015;
+        public static final int recent_goldearned=0x7f06001a;
+        public static final int recent_ipearned=0x7f060017;
+        public static final int recent_summoner=0x7f060012;
+        public static final int summoner_icon=0x7f06000b;
         public static final int tv1=0x7f060005;
         public static final int tv2=0x7f060008;
-        public static final int tv3=0x7f06000b;
-        public static final int tv4=0x7f06000e;
-        public static final int version=0x7f06001b;
+        public static final int tv3=0x7f06000c;
+        public static final int tv4=0x7f06000f;
+        public static final int version=0x7f06001c;
     }
     public static final class layout {
         public static final int activity_last_game_played=0x7f030000;
