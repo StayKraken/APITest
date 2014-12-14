@@ -28,7 +28,7 @@
     <string name="stat_level" translatable="false">Level:</string>
     <string name="stat_goldearned" translatable="false">Gold Earned:</string>
     <string name="stat_timeplayed" translatable="false">Time Played:</string>
-    <string name="stat_win" translatable="false">Win:</string>
+    <string name="stat_win" translatable="false">Match Outcome:</string>
     <string name="version" translatable="false">0.1.8.5</string>
     <string name="title_activity_last_game_played" translatable="false">Last Game Played</string>
     <string name="title_activity_recent_games" translatable="false">Recent Games</string>

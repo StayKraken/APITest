@@ -262,6 +262,8 @@
 		            android:background="#E0E0E0"
 		            android:layout_marginLeft="4dip"
 		            android:layout_marginRight="4dip" />
+		    
+		    
 		    <TextView
 		           android:id="@+id/game_spell1"
 		           android:layout_width="wrap_content"
@@ -292,6 +294,20 @@
 		           android:textColor="#757575"
 		           android:gravity="center"
 		           android:text="@string/placeholder" />
+		    
+ 	       <ImageView
+	 	           android:id="@+id/sum_spell1"
+	 	           android:layout_width="50sp"
+	 	           android:layout_height="50sp"
+	 	           android:layout_alignParentEnd="true"
+	 	           android:layout_alignParentRight="true"
+	 	           android:padding="5sp"
+	 	           android:layout_below="@id/game_mapid"
+	 	           android:adjustViewBounds="true"
+	 	           android:contentDescription="@string/app_name"
+	 	           android:alpha="0"
+	 	           android:src="@drawable/aatrox" />		    
+		       
 		    <View
 		            android:id="@+id/bar8"
 		            android:layout_width="match_parent"
@@ -300,6 +316,8 @@
 		            android:background="#E0E0E0"
 		            android:layout_marginLeft="4dip"
 		            android:layout_marginRight="4dip" />
+		    
+		    
 		    <TextView
 		           android:id="@+id/game_spell2"
 		           android:layout_width="wrap_content"
@@ -330,6 +348,20 @@
 		           android:textColor="#757575"
 		           android:gravity="center"
 		           android:text="@string/placeholder" />
+		    
+ 	       <ImageView
+	 	           android:id="@+id/sum_spell2"
+	 	           android:layout_width="50sp"
+	 	           android:layout_height="50sp"
+	 	           android:layout_alignParentEnd="true"
+	 	           android:layout_alignParentRight="true"
+	 	           android:padding="5sp"
+	 	           android:layout_below="@id/game_spell1"
+	 	           android:adjustViewBounds="true"
+	 	           android:contentDescription="@string/app_name"
+	 	           android:alpha="0"
+	 	           android:src="@drawable/aatrox" />	
+	 	           		    
 		    <View
 		            android:id="@+id/bar9"
 		            android:layout_width="match_parent"

@@ -27,6 +27,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
  
 public class GameData extends Fragment {
@@ -34,6 +35,9 @@ public class GameData extends Fragment {
 	Context c;
 	GameInfo
 		game_info;
+	ImageView
+		sum_spell1,
+		sum_spell2;
 	String
 		stringURL;
 	SummonerInfo
@@ -93,6 +97,9 @@ public class GameData extends Fragment {
 		field11 = (TextView)rootView.findViewById(R.id.field_goldearned);
 		field12 = (TextView)rootView.findViewById(R.id.field_timeplayed);
 		field13 = (TextView)rootView.findViewById(R.id.field_win);
+		
+		sum_spell1 = (ImageView)rootView.findViewById(R.id.sum_spell1);
+		sum_spell2 = (ImageView)rootView.findViewById(R.id.sum_spell2);
 		
 		field0.setText(name);
 		
@@ -160,12 +167,28 @@ public class GameData extends Fragment {
 					field6.setText(game.optString("mapId"));
 					field7.setText(game.optString("spell1"));
 					field8.setText(game.optString("spell2"));
+					
+					
+					//optString gets the summoner spell ID. getSumSpellName gets the String form of the 
+					//summoner spell, setBitmapFromAsset sets the corresponding summoner spell icon
+					//to the specified imageview.
+					setBitmapFromAsset(getSumSpellName(game.optString("spell1")), sum_spell1);
+					setBitmapFromAsset(getSumSpellName(game.optString("spell2")), sum_spell2);				
+					
+					
 					field9.setText(game.optString("teamId"));
 					if(game_info.stats != null){
 						field10.setText(stats.optString("level"));
 						field11.setText(stats.optString("goldEarned"));
 						field12.setText(stats.optString("timePlayed"));
-						field13.setText(stats.optString("win"));
+						
+						
+						if(stats.optString("win") != null && stats.optString("win") == "true")
+							field13.setText("Victory");
+						else if(stats.optString("win") != null && stats.optString("win") == "false")
+							field13.setText("Defeat");
+						else //outcome is null or not found
+							field13.setText("Unavailable");							
 					}
 				} catch (Exception e) { 
 					field1.setText(e.toString());
@@ -209,16 +232,45 @@ public class GameData extends Fragment {
 		return new String(buffer);
 	}//readIt
 	
-	private void setBitmapFromAsset()
+	private void setBitmapFromAsset(String imagePathString, ImageView image)
     {
         AssetManager assetManager = c.getAssets();
         InputStream istr = null;
         try {
-            istr = assetManager.open("champion/Fizz.png");
+            istr = assetManager.open("summonerspells/" + imagePathString + ".png");
         } catch (IOException e) {
             e.printStackTrace();
         }
         Bitmap bitmap = BitmapFactory.decodeStream(istr);
-        //champion.setImageBitmap(bitmap);
+        image.setImageBitmap(bitmap);
+        image.setAlpha((float)1);        
+        
     }
+	
+	
+	//Call after returning summoner spell code
+	private String getSumSpellName(String sumSpellID) {
+		String spell = null;
+		
+		switch(sumSpellID.toLowerCase()) {
+			case "1": spell = "Boost"; break;
+			case "12": spell = "Teleport"; break;
+			case "30": spell = "Poro Recall"; break;
+			case "14": spell = "Ignite"; break;
+			case "6": spell = "Ghost"; break;
+			case "7": spell = "Heal"; break;
+			case "10": spell = "Revive"; break;
+			case "11": spell = "Smite"; break;
+			case "3": spell = "Exhaust"; break;
+			case "31": spell = "Poro Throw"; break;
+			case "13": spell = "Clarity"; break;
+			case "2": spell = "Clairvoyance"; break;
+			case "21": spell = "Barrier"; break;
+			case "4": spell = "Flash"; break;
+			case "17": spell = "Garrison"; break;
+			default: spell= "ImagePlaceholderSmall.png"; break;
+		}
+		
+		return spell;
+	}//getSumSpell
 }
