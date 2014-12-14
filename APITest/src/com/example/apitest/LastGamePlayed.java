@@ -15,11 +15,11 @@ import android.support.v4.view.ViewPager;
 public class LastGamePlayed extends FragmentActivity implements TabListener {
 	ViewPager viewPager;
 	ActionBar actionBar;
-	
-GameInfo
-	game_info;
-SummonerInfo
-	summoner_info;
+		
+	GameInfo
+		game_info;
+	SummonerInfo
+		summoner_info;
 	
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

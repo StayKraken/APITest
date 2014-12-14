@@ -25,8 +25,7 @@ import android.widget.TextView;
  
 public class GameData extends Fragment {
 	private static final String DEBUG_TAG = "HttpExample";
-	Context
-		c = getActivity().getApplicationContext();
+	Context c;
 	GameInfo
 		game_info;
 	String
@@ -60,6 +59,7 @@ public class GameData extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
+    	c =getActivity().getApplicationContext();
     	View rootView = inflater.inflate(R.layout.fragment_game_data, container, false);
     	
     	field1 = (TextView)rootView.findViewById(R.id.recent_summoner);
@@ -69,9 +69,10 @@ public class GameData extends Fragment {
 		field5 = (TextView)rootView.findViewById(R.id.recent_ipearned);
 		field6 = (TextView)rootView.findViewById(R.id.recent_goldearned);
 		
-		field1.setText(summoner_info.getName());
+		field1.setText("chode");
+		//summoner_info.getName()
 		
-		stringURL = "https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/" + summoner_info.getID() + "/recent?api_key=d29d7e08-c066-4aad-b6fc-3e285ea5ceae";
+		stringURL = "https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/" + "40736527" + "/recent?api_key=d29d7e08-c066-4aad-b6fc-3e285ea5ceae";
 		
 		ConnectivityManager connMgr = (ConnectivityManager)c.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
