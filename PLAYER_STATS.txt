@@ -1,0 +1,17 @@
+APITest
+=======
+
+game.championId,
+game.gameId,	?
+game.gameMode,
+game.gameType,
+game.ipEarned,
+game.mapId,
+game.spell1,
+game.spell2,
+game.teamId;
+
+stat.level,
+stat.goldEarned
+stat.timePlayed
+stat.win;
