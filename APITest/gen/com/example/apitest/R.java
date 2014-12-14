@@ -15,21 +15,28 @@ public final class R {
         public static final int button_custom=0x7f020001;
         public static final int button_default=0x7f020002;
         public static final int button_pressed=0x7f020003;
-        public static final int game_data_background=0x7f020004;
+        public static final int gamedata_background=0x7f020004;
         public static final int ic_launcher=0x7f020005;
         public static final int icon=0x7f020006;
         public static final int leaguebackground=0x7f020007;
         public static final int leaguelogo=0x7f020008;
-        public static final int player_stats=0x7f020009;
+        public static final int playerstats_background=0x7f020009;
         public static final int rounded_corners_button=0x7f02000a;
     }
     public static final class id {
         public static final int bar1=0x7f060006;
+        public static final int bar10=0x7f060036;
+        public static final int bar11=0x7f060039;
+        public static final int bar12=0x7f06003c;
+        public static final int bar13=0x7f06003f;
         public static final int bar2=0x7f060009;
         public static final int bar3=0x7f06000d;
         public static final int bar4=0x7f060010;
         public static final int bar5=0x7f060019;
-        public static final int bar6=0x7f06001e;
+        public static final int bar6=0x7f06002a;
+        public static final int bar7=0x7f06002d;
+        public static final int bar8=0x7f060030;
+        public static final int bar9=0x7f060033;
         public static final int button1=0x7f060003;
         public static final int button_bottom=0x7f060012;
         public static final int button_test=0x7f060013;
@@ -40,7 +47,32 @@ public final class R {
         public static final int field3=0x7f06000a;
         public static final int field4=0x7f06000e;
         public static final int field5=0x7f06001a;
+        public static final int field_championid=0x7f060021;
+        public static final int field_gameid=0x7f060023;
+        public static final int field_gamemode=0x7f060025;
+        public static final int field_gametype=0x7f060027;
+        public static final int field_goldearned=0x7f06003b;
+        public static final int field_ipearned=0x7f060029;
+        public static final int field_level=0x7f060038;
+        public static final int field_mapid=0x7f06002c;
+        public static final int field_spell1=0x7f06002f;
+        public static final int field_spell2=0x7f060032;
+        public static final int field_teamid=0x7f060035;
+        public static final int field_timeplayed=0x7f06003e;
+        public static final int field_win=0x7f060041;
+        public static final int game_championid=0x7f060020;
+        public static final int game_gameid=0x7f060022;
+        public static final int game_gamemode=0x7f060024;
+        public static final int game_gametype=0x7f060026;
+        public static final int game_ipearned=0x7f060028;
+        public static final int game_layout=0x7f06001e;
+        public static final int game_mapid=0x7f06002b;
+        public static final int game_spell1=0x7f06002e;
+        public static final int game_spell2=0x7f060031;
+        public static final int game_summoner=0x7f06001f;
+        public static final int game_teamid=0x7f060034;
         public static final int pager=0x7f060000;
+        public static final int player_layout=0x7f060042;
         public static final int r1=0x7f060001;
         public static final int recent_gameid=0x7f060015;
         public static final int recent_gamemode=0x7f060016;
@@ -48,6 +80,10 @@ public final class R {
         public static final int recent_goldearned=0x7f06001b;
         public static final int recent_ipearned=0x7f060018;
         public static final int recent_summoner=0x7f060014;
+        public static final int stat_goldearned=0x7f06003a;
+        public static final int stat_level=0x7f060037;
+        public static final int stat_timeplayed=0x7f06003d;
+        public static final int stat_win=0x7f060040;
         public static final int summoner_icon=0x7f06000b;
         public static final int tv1=0x7f060005;
         public static final int tv2=0x7f060008;
@@ -64,7 +100,7 @@ public final class R {
         public static final int fragment_player_stats=0x7f030004;
     }
     public static final class string {
-        public static final int DNC=0x7f040014;
+        public static final int DNC=0x7f040021;
         public static final int app_name=0x7f040000;
         public static final int enter_text=0x7f040004;
         public static final int field1=0x7f040005;
@@ -77,14 +113,27 @@ public final class R {
         public static final int field_gametype=0x7f04000c;
         public static final int field_goldearned=0x7f04000d;
         public static final int field_ipearned=0x7f04000e;
+        public static final int game_championid=0x7f04000f;
+        public static final int game_gameid=0x7f040010;
+        public static final int game_gamemode=0x7f040011;
+        public static final int game_gametype=0x7f040012;
+        public static final int game_ipearned=0x7f040013;
+        public static final int game_mapid=0x7f040014;
+        public static final int game_spell1=0x7f040015;
+        public static final int game_spell2=0x7f040016;
+        public static final int game_teamid=0x7f040017;
         public static final int get_info=0x7f040001;
-        public static final int hello_blank_fragment=0x7f040013;
-        public static final int hello_world=0x7f040012;
+        public static final int hello_blank_fragment=0x7f040020;
+        public static final int hello_world=0x7f04001f;
         public static final int placeholder=0x7f040003;
         public static final int recent_game=0x7f040002;
-        public static final int title_activity_last_game_played=0x7f040010;
-        public static final int title_activity_recent_games=0x7f040011;
-        public static final int version=0x7f04000f;
+        public static final int stat_goldearned=0x7f040019;
+        public static final int stat_level=0x7f040018;
+        public static final int stat_timeplayed=0x7f04001a;
+        public static final int stat_win=0x7f04001b;
+        public static final int title_activity_last_game_played=0x7f04001d;
+        public static final int title_activity_recent_games=0x7f04001e;
+        public static final int version=0x7f04001c;
     }
     public static final class style {
         /** 

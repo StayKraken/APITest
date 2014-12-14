@@ -7,11 +7,17 @@ import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import com.example.apitest.R;
+
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -33,12 +39,20 @@ public class GameData extends Fragment {
 	SummonerInfo
 		summoner_info;
 	TextView
+		field0,
 		field1,
 		field2,
 		field3,
 		field4,
 		field5,
-		field6;
+		field6,
+		field7,
+		field8,
+		field9,
+		field10,
+		field11,
+		field12,
+		field13;
 	
 	public GameData(){
 	}
@@ -60,28 +74,37 @@ public class GameData extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
     	c =getActivity().getApplicationContext();
+    	String icon = getArguments().getString("icon").trim();
+    	String id = getArguments().getString("id").trim();
+    	String name = getArguments().getString("name").trim();
     	View rootView = inflater.inflate(R.layout.fragment_game_data, container, false);
     	
-    	field1 = (TextView)rootView.findViewById(R.id.recent_summoner);
-		field2 = (TextView)rootView.findViewById(R.id.recent_gameid);
-		field3 = (TextView)rootView.findViewById(R.id.recent_gamemode);
-		field4 = (TextView)rootView.findViewById(R.id.recent_gametype);
-		field5 = (TextView)rootView.findViewById(R.id.recent_ipearned);
-		field6 = (TextView)rootView.findViewById(R.id.recent_goldearned);
+    	field0 = (TextView)rootView.findViewById(R.id.game_summoner);
+    	field1 = (TextView)rootView.findViewById(R.id.field_championid);
+		field2 = (TextView)rootView.findViewById(R.id.field_gameid);
+		field3 = (TextView)rootView.findViewById(R.id.field_gamemode);
+		field4 = (TextView)rootView.findViewById(R.id.field_gametype);
+		field5 = (TextView)rootView.findViewById(R.id.field_ipearned);
+		field6 = (TextView)rootView.findViewById(R.id.field_mapid);
+		field7 = (TextView)rootView.findViewById(R.id.field_spell1);
+		field8 = (TextView)rootView.findViewById(R.id.field_spell2);
+		field9 = (TextView)rootView.findViewById(R.id.field_teamid);
+		field10 = (TextView)rootView.findViewById(R.id.field_level);
+		field11 = (TextView)rootView.findViewById(R.id.field_goldearned);
+		field12 = (TextView)rootView.findViewById(R.id.field_timeplayed);
+		field13 = (TextView)rootView.findViewById(R.id.field_win);
 		
-		field1.setText("chode");
-		//summoner_info.getName()
+		field0.setText(name);
 		
-		stringURL = "https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/" + "40736527" + "/recent?api_key=d29d7e08-c066-4aad-b6fc-3e285ea5ceae";
+		stringURL = "https://na.api.pvp.net/api/lol/na/v1.3/game/by-summoner/" + id + "/recent?api_key=d29d7e08-c066-4aad-b6fc-3e285ea5ceae";
 		
 		ConnectivityManager connMgr = (ConnectivityManager)c.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 		if(networkInfo != null && networkInfo.isConnected()) {
 			new DownloadWebpageTask().execute(stringURL);
 		} else {
-			field2.setText("No network connection available");
+			field1.setText("No network connection available");
 		}
-    	
          
         return rootView;
     }
@@ -99,34 +122,53 @@ public class GameData extends Fragment {
 		@Override
 		protected void onPostExecute(String result) {
 			if(result.equals("Unable to retrieve web page. URL may be invalid.")){
-				field2.setText("Game Not Found.");
+				field1.setText("Game Not Found.");
 			}
 			else {
 				try {
 					JSONObject jObject = new JSONObject(result);
 					JSONArray jArray = jObject.getJSONArray("games");
-					JSONObject game1 = jArray.getJSONObject(0);
-					JSONArray fellowPlayers = game1.getJSONArray("fellowPlayers");
-					JSONObject stats = game1.getJSONObject("stats");
+					JSONObject game = jArray.getJSONObject(0);
+					JSONArray fellowPlayers = new JSONArray();
+					JSONObject stats = new JSONObject();
 					
-					game_info = new GameInfo(game1.optString("championId"),
-							game1.optString("createDate"), game1.optString("gameId"),
-							game1.optString("gameMode"), game1.optString("gameType"),
-							game1.optString("invalid"), game1.optString("ipEarned"),
-							game1.optString("mapId"), game1.optString("level"),
-							game1.optString("spell1"), game1.optString("spell2"),
-							game1.optString("subType"), game1.optString("teamId"));
-					game_info.setPlayers(fellowPlayers);
-					game_info.setStats(stats);
-										
+					game_info = new GameInfo(game.optString("championId"),
+							game.optString("createDate"), game.optString("gameId"),
+							game.optString("gameMode"), game.optString("gameType"),
+							game.optString("invalid"), game.optString("ipEarned"),
+							game.optString("mapId"), game.optString("level"),
+							game.optString("spell1"), game.optString("spell2"),
+							game.optString("subType"), game.optString("teamId"));
+					try{
+						fellowPlayers = game.getJSONArray("fellowPlayers");
+						game_info.setPlayers(fellowPlayers);
+					}catch(Exception e){
+						
+					}
+					try{
+						stats = game.getJSONObject("stats");
+						game_info.setStats(stats);
+					}catch(Exception e){
+						
+					}
+					
+					field1.setText(game_info.getChampionId());
 					field2.setText(game_info.getGameId());
 					field3.setText(game_info.getGameMode());
 					field4.setText(game_info.getGameType());
 					field5.setText(game_info.getIpEarned());
-					field6.setText(game_info.stats.getGoldEarned());
-					
-				} catch (JSONException e) { 
-					field2.setText(e.toString());
+					field6.setText(game.optString("mapId"));
+					field7.setText(game.optString("spell1"));
+					field8.setText(game.optString("spell2"));
+					field9.setText(game.optString("teamId"));
+					if(game_info.stats != null){
+						field10.setText(stats.optString("level"));
+						field11.setText(stats.optString("goldEarned"));
+						field12.setText(stats.optString("timePlayed"));
+						field13.setText(stats.optString("win"));
+					}
+				} catch (Exception e) { 
+					field1.setText(e.toString());
 				}
 			}
 		}
@@ -166,4 +208,17 @@ public class GameData extends Fragment {
 		reader.read(buffer);
 		return new String(buffer);
 	}//readIt
+	
+	private void setBitmapFromAsset()
+    {
+        AssetManager assetManager = c.getAssets();
+        InputStream istr = null;
+        try {
+            istr = assetManager.open("champion/Fizz.png");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Bitmap bitmap = BitmapFactory.decodeStream(istr);
+        //champion.setImageBitmap(bitmap);
+    }
 }

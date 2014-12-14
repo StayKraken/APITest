@@ -96,7 +96,7 @@ public class MainActivity extends Activity {
 			test_button.setAlpha(1);
 		} else
 			recent_games_button.setAlpha(0);
-		test_button.setAlpha(0);
+			test_button.setAlpha(0);
 	}
 
 	public void myClickHandler(View view)throws IOException {
@@ -165,6 +165,7 @@ public class MainActivity extends Activity {
 					test_button.setAlpha(1);
 					
 					recent_games_button.setClickable(true);
+					test_button.setClickable(true);
 				} catch (JSONException e) { }
 			}
 		}
@@ -217,7 +218,7 @@ public class MainActivity extends Activity {
 		try{
 			Intent intent = new Intent(getApplicationContext(), LastGamePlayed.class);
 			Bundle bundle = new Bundle();
-	        bundle.putParcelable("Summoner", summoner_info);  
+	        bundle.putParcelable("Summoner", summoner_info); 
 	        intent.putExtras(bundle);
 			startActivity(intent);
 		}catch(Exception e){

@@ -16,6 +16,19 @@
     <string name="field_gametype" translatable="false">Game Type:</string>
     <string name="field_goldearned" translatable="false">Gold Earned:</string>
     <string name="field_ipearned" translatable="false">IP Earned:</string>
+    <string name="game_championid" translatable="false">Champion ID:</string>
+    <string name="game_gameid" translatable="false">Game ID:</string>
+    <string name="game_gamemode" translatable="false">Game Mode:</string>
+    <string name="game_gametype" translatable="false">Game Type:</string>
+    <string name="game_ipearned" translatable="false">IP Earned:</string>
+    <string name="game_mapid" translatable="false">Map ID:</string>
+    <string name="game_spell1" translatable="false">Spell 1:</string>
+    <string name="game_spell2" translatable="false">Spell 2:</string>
+    <string name="game_teamid" translatable="false">Team ID:</string>
+    <string name="stat_level" translatable="false">Level:</string>
+    <string name="stat_goldearned" translatable="false">Gold Earned:</string>
+    <string name="stat_timeplayed" translatable="false">Time Played:</string>
+    <string name="stat_win" translatable="false">Win:</string>
     <string name="version" translatable="false">0.1.8.5</string>
     <string name="title_activity_last_game_played" translatable="false">Last Game Played</string>
     <string name="title_activity_recent_games" translatable="false">Recent Games</string>

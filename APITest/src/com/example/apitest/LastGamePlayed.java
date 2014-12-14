@@ -15,11 +15,11 @@ import android.support.v4.view.ViewPager;
 public class LastGamePlayed extends FragmentActivity implements TabListener {
 	ViewPager viewPager;
 	ActionBar actionBar;
-		
-	GameInfo
-		game_info;
-	SummonerInfo
-		summoner_info;
+	
+GameInfo
+	game_info;
+SummonerInfo
+	summoner_info;
 	
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +27,8 @@ public class LastGamePlayed extends FragmentActivity implements TabListener {
         
         summoner_info = (SummonerInfo)getIntent().getParcelableExtra("Summoner");
         viewPager=(ViewPager)findViewById(R.id.pager);
-        viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
+        viewPager.setAdapter(new MyAdapter(getSupportFragmentManager(), summoner_info.getIcon(),
+        		summoner_info.getID(), summoner_info.getName()));
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener(){
 
 			@Override
@@ -70,18 +71,37 @@ public class LastGamePlayed extends FragmentActivity implements TabListener {
 }
 
 class MyAdapter extends FragmentPagerAdapter{
-
-	public MyAdapter(FragmentManager fm) {
+	String
+		icon,
+		id,
+		name;
+	
+	public MyAdapter(FragmentManager fm, String arg_icon, String arg_id, String arg_name) {
 		super(fm);
+		icon = arg_icon;
+		id = arg_id;
+		name = arg_name;
 	}
 
 	@Override
 	public Fragment getItem(int arg0) {
 		Fragment fragment=null;
-		if(arg0==0)
+		if(arg0==0){
+			Bundle bundle = new Bundle();
+			bundle.putString("icon", icon);
+			bundle.putString("id", id);
+			bundle.putString("name", name);
 			fragment = new GameData();
-		else if(arg0==1)
+			fragment.setArguments(bundle);
+		}
+		else if(arg0==1){
+			Bundle bundle = new Bundle();
+			bundle.putString("icon", icon);
+			bundle.putString("id", id);
+			bundle.putString("name", name);
 			fragment = new PlayerStats();
+			fragment.setArguments(bundle);
+		}
 		return fragment;
 	}
 

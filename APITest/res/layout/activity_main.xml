@@ -279,6 +279,7 @@
            android:textColor="#FFFFFF"
            android:background="#00000000"
            android:alpha="0"
+           android:clickable="false"
            android:onClick="click_version"
            android:gravity="center"
            android:text="@string/DNC" />

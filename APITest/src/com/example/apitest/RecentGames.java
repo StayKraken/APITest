@@ -88,8 +88,6 @@ public class RecentGames extends Activity {
 					JSONObject jObject = new JSONObject(result);
 					JSONArray jArray = jObject.getJSONArray("games");
 					JSONObject game1 = jArray.getJSONObject(0);
-					JSONArray fellowPlayers = game1.getJSONArray("fellowPlayers");
-					JSONObject stats = game1.getJSONObject("stats");
 					
 					game_info = new GameInfo(game1.optString("championId"),
 							game1.optString("createDate"), game1.optString("gameId"),
@@ -98,15 +96,25 @@ public class RecentGames extends Activity {
 							game1.optString("mapId"), game1.optString("level"),
 							game1.optString("spell1"), game1.optString("spell2"),
 							game1.optString("subType"), game1.optString("teamId"));
-					game_info.setPlayers(fellowPlayers);
-					game_info.setStats(stats);
+					try{
+						JSONArray fellowPlayers = game1.getJSONArray("fellowPlayers");
+						game_info.setPlayers(fellowPlayers);
+					}catch(Exception e){
+						
+					}
+					try{
+						JSONObject stats = game1.getJSONObject("stats");
+						game_info.setStats(stats);
+					}catch(Exception e){
+						
+					}
 										
 					gameid_field.setText(game_info.getGameId());
 					gamemode_field.setText(game_info.getGameMode());
 					gametype_field.setText(game_info.getGameType());
 					ipearned_field.setText(game_info.getIpEarned());
-					goldearned_field.setText(game_info.stats.getGoldEarned());
-					
+					if(game_info.stats != null)
+						goldearned_field.setText(game_info.stats.getGoldEarned());
 				} catch (JSONException e) { 
 					gameid_field.setText(e.toString());
 				}
