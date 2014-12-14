@@ -1,17 +1,18 @@
 APITest
 =======
 
-game.championId,
-game.gameId,	?
-game.gameMode,
-game.gameType,
-game.ipEarned,
-game.mapId,
-game.spell1,
-game.spell2,
-game.teamId;
-
-stat.level,
+stat.assists
+stat.championsKilled
 stat.goldEarned
+stat.item0
+stat.item1
+stat.item2
+stat.item3
+stat.largestKillingSpree
+stat.stat.largestMultiKill
+stat.minionsKilled
+stat.numDeaths
 stat.timePlayed
-stat.win;
+stat.totalDamageDealt
+stat.totalDamageDealtToChampions
+stat.totalDamageTaken
